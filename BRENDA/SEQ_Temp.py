@@ -3,7 +3,8 @@ from zeep import Client
 import hashlib
 ######################################################################################################
 wsdl = "https://www.brenda-enzymes.org/soap/brenda_zeep.wsdl"
-password = hashlib.sha256("VTR!xk5H_!HjP9J".encode("utf-8")).hexdigest()
+email = '邮箱'
+password = hashlib.sha256("注册的密码".encode("utf-8")).hexdigest()
 client = Client(wsdl)
 import os
 
@@ -29,14 +30,14 @@ def merge_key_value_pairs(pairs):
         result[key].append(value)
     return result
 
-folder_path_Temp = r"C:\Users\33385\Desktop\天工生物\ML\sequence\Cof"
+folder_path_Temp = r"sequence\Temp"
 file_names_Temp = get_all_files(folder_path_Temp)
 
-parameters = ("3338561620@qq.com",password)
+parameters = (email,password)
 list_resultString_pH = client.service.getEcNumbersFromPhOptimum(*parameters)
-parameters = ("3338561620@qq.com",password)
+parameters = (email,password)
 list_resultString_Cofactor = client.service.getEcNumbersFromCofactor(*parameters)
-parameters = ("3338561620@qq.com",password)
+parameters = (email,password)
 list_resultString_Temp = client.service.getEcNumbersFromTemperatureOptimum(*parameters)
 
 list_fail_Temp = find_different_elements(list_resultString_Temp, file_names_Temp)
@@ -46,7 +47,7 @@ for i in list_fail_Temp:
         try:
             dict1 = {}
             parameters = (
-            "3338561620@qq.com", password, "ecNumber*" + i, "sequence*", "noOfAminoAcids*", "firstAccessionCode*",
+            email, password, "ecNumber*" + i, "sequence*", "noOfAminoAcids*", "firstAccessionCode*",
             "source*", "id*", "organism*")
             resultString_Temp = client.service.getSequence(*parameters)
             dict1['ecNumber'] = i
