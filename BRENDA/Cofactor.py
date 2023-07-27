@@ -3,7 +3,8 @@ from zeep import Client
 import hashlib
 ######################################################################################################
 wsdl = "https://www.brenda-enzymes.org/soap/brenda_zeep.wsdl"
-password = hashlib.sha256("VTR!xk5H_!HjP9J".encode("utf-8")).hexdigest()
+email = "注册的时候使用的邮箱"
+password = hashlib.sha256("注册的密码".encode("utf-8")).hexdigest()
 client = Client(wsdl)
 
 def average_values(key_value_pairs):
@@ -36,16 +37,16 @@ def merge_key_value_pairs(pairs):
     return result
 
 
-parameters = ("3338561620@qq.com",password)
+parameters = (email,password)
 list_resultString_pH = client.service.getEcNumbersFromPhOptimum(*parameters)
-parameters = ("3338561620@qq.com",password)
+parameters = (email,password)
 list_resultString_Cofactor = client.service.getEcNumbersFromCofactor(*parameters)
-parameters = ("3338561620@qq.com",password)
+parameters = (email,password)
 list_resultString_Temp = client.service.getEcNumbersFromTemperatureOptimum(*parameters)
 
 for i in list_resultString_Cofactor:
     dict1 = {}
-    parameters = ("3338561620@qq.com", password, "ecNumber*" + i, "cofactor*", "commentary*", "organism*", "ligandStructureId*", "literature*")
+    parameters = (email, password, "ecNumber*" + i, "cofactor*", "commentary*", "organism*", "ligandStructureId*", "literature*")
     resultString_Cofactor = client.service.getCofactor(*parameters)
     dict1['ecNumber'] = i
     pairs = [(j['organism'], j['cofactor']) for j in resultString_Cofactor]
