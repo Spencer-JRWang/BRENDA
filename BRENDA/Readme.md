@@ -3,4 +3,4 @@
 - 获取的序列也是每个EC号一个文件，其中按照物种排列
 - 使用时需要在和python文件同阶目录下建立两个文件夹，分别为sequence文件夹和brenda文件夹，每个文件夹中放三个名字分别为Cof，Temp，pH的空文件夹
 - 注意：使用时需要先注册brenda数据库的账号，官网 [link](https://www.brenda-enzymes.org/login.php)，将邮箱和密码填入代码对应的位置
-- pycharm terminal中运行`git clone https://github.com/LoveUCB/BRENDA/tree/main/BRENDA`
+- pycharm terminal中运行`git clone https://github.com/LoveUCB/BRENDA`
