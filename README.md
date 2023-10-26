@@ -1,0 +1,5 @@
+- Cofactor Temp pH 三个文件用来从brenda数据库上抓取对应的EC号，每个文件是一个EC号，按物种排列
+- 以SEQ打头的三个文件读取获取的EC号从brenda数据库上抓取EC号，已经加入比对算法，程序若突然终止再重新开始不会再重复获取已经获取的文件，放心使用
+- 获取的序列也是每个EC号一个文件，其中按照物种排列
+- 使用时需要在和python文件同阶目录下建立两个文件夹，分别为sequence文件夹和brenda文件夹，每个文件夹中放三个名字分别为Cof，Temp，pH的空文件夹
+- 注意：使用时需要先注册brenda数据库的账号，官网 [link](https://www.brenda-enzymes.org/login.php)，将邮箱和密码填入代码对应的位置
